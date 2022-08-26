@@ -1,1 +1,1 @@
-# PSH
+# Project Setup Helper
