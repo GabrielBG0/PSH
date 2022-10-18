@@ -19,8 +19,15 @@ pub fn exec(url: String) {
 
     env::set_current_dir(format!("{}/{}", root, repo_name)).unwrap();
 
-    match Command::new("cmd").args(["/C", "cargo build"]).status() {
-        Ok(_) => print!("nice"),
-        Err(err) => print!("{:?}", err),
+    if cfg!(target_os = "windows") {
+        match Command::new("cmd").args(["/C", "yarn install"]).status() {
+            Ok(_) => print!("nice"),
+            Err(err) => print!("{:?}", err),
+        }
+    } else {
+        match Command::new("sh").args(["-c", "yarn install"]).status() {
+            Ok(_) => print!("nice"),
+            Err(err) => print!("{:?}", err),
+        }
     }
 }
