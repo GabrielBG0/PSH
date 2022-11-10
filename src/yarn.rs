@@ -21,12 +21,12 @@ pub fn exec(url: String) {
 
     if cfg!(target_os = "windows") {
         match Command::new("cmd").args(["/C", "yarn install"]).status() {
-            Ok(_) => print!("nice"),
+            Ok(_) => print!("Project setup has finished."),
             Err(err) => print!("{:?}", err),
         }
     } else {
         match Command::new("sh").args(["-c", "yarn install"]).status() {
-            Ok(_) => print!("nice"),
+            Ok(_) => print!("Project setup has finished."),
             Err(err) => print!("{:?}", err),
         }
     }
